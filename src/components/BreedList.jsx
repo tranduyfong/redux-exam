@@ -23,8 +23,10 @@ function BreedList() {
     );
 
     useEffect(() => {
-        dispatch(fetchBreeds());
-    }, [dispatch]);
+        if (breeds.length === 0) {
+            dispatch(fetchBreeds());
+        }
+    }, [dispatch, breeds.length]);
 
     if (loading)
         return <h2>Loading...</h2>;
